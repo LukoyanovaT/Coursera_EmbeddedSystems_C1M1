@@ -27,6 +27,7 @@
 
 int main()
 {
+  /* Variable Declaration */
   char array[SIZE]={200, 235, 170,  34,  56,  94, 177, 83, 17, 45,\
                     188,  21,   1,  99,  12,  33, 155, 73,  7, 14,\
                     244, 114, 168,  95,  63,  91,   9, 11, 15, 53,\
@@ -34,6 +35,7 @@ int main()
   unsigned char * ptr = array;
   unsigned char max, min, mean, med=0;
 
+  /*Statistics and Printings Functions */
   printf("Source array:\n");
   print_array(ptr, SIZE);
 
@@ -42,12 +44,13 @@ int main()
   mean = find_mean(ptr, SIZE);
   med  = find_median(ptr, SIZE);
   print_statistics(max,min,mean,med);
+
   printf("Sorted array:\n");
   print_array(ptr, SIZE);
   return(0);
 }
 
-
+/* This function finds the maximum value of the array. */
 unsigned char find_maximum(unsigned char * ptr, unsigned int sz){
   unsigned int i;
   unsigned char max;
@@ -60,6 +63,7 @@ unsigned char find_maximum(unsigned char * ptr, unsigned int sz){
   return(max);
 }
 
+/* This function finds the miminum value of the array. */
 unsigned char find_minimum(unsigned char * ptr, unsigned int sz){
   unsigned int i;
   unsigned char min;
@@ -72,6 +76,7 @@ unsigned char find_minimum(unsigned char * ptr, unsigned int sz){
   return (min);
 }
 
+/* This function find the mean value of the array. */
 unsigned char find_mean(unsigned char * ptr, unsigned int sz){
   unsigned int i;
   unsigned int sum=0;
@@ -82,20 +87,22 @@ unsigned char find_mean(unsigned char * ptr, unsigned int sz){
   return(sum/sz);
 }
 
+/*This function find median value of the array. */
 unsigned char find_median(unsigned char * ptr, unsigned int sz){
   unsigned int i;
-  unsigned int mean=0;
+  unsigned int med=0;
 
   sort_array(ptr, sz);
   if(sz%2) {
-    mean = (*(ptr + sz/2));
+    med = (*(ptr + sz/2));
   }
   else {
-    mean = ( *(ptr+sz/2) + *(ptr + sz/2 - 1) ) / 2;
+    med = ( *(ptr+sz/2) + *(ptr + sz/2 - 1) ) / 2;
   }
-  return(mean);
+  return(med);
 }
 
+/*This function sorts the contents of the array. */
 void sort_array(unsigned char * ptr, unsigned int sz){
   unsigned int i, j;
   unsigned char swap;
@@ -111,6 +118,7 @@ void sort_array(unsigned char * ptr, unsigned int sz){
   }
 }
 
+/* This function prints the contents of the array. */
 void print_array(unsigned char * ptr, unsigned int sz){
   unsigned int i;
   
@@ -120,7 +128,8 @@ void print_array(unsigned char * ptr, unsigned int sz){
 
 }
 
-void print_statistics(unsigned char max, unsigned char min, 	\
+/* This function prints the statistics of the array. */
+void print_statistics(unsigned char max, unsigned char min,\
 		     unsigned char mean, unsigned char med){
   printf("Statistics:\n");
   printf("\tThe maximum of data array\t= %3d\n", max);
